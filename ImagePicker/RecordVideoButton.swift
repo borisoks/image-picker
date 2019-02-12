@@ -15,7 +15,7 @@ final class RecordVideoButton: StationaryButton {
         }
     }
     
-    private enum State: String {
+    private enum LayerState: String {
         case initial
         case pressed
         case recording
@@ -28,7 +28,7 @@ final class RecordVideoButton: StationaryButton {
     private var outerCircleLayer = CALayer()
     private var innerCircleLayer = CALayer()
     private var innerCircleLayerInset: CGFloat { return outerBorderWidth + innerBorderWidth }
-    private var layersState = State.initial
+    private var layersState = LayerState.initial
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -77,7 +77,7 @@ final class RecordVideoButton: StationaryButton {
         setNeedsLayout()
     }
     
-    private func updateCircleLayers(state: State, animated: Bool) {
+    private func updateCircleLayers(state: LayerState, animated: Bool) {
         guard layersState != state else { return }
         
         layersState = state
